@@ -5,6 +5,7 @@ import com.fourmagic.club_notice.entity.Article;
 import com.fourmagic.club_notice.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,20 +27,35 @@ public class ArticleController {
     }
 
     @PostMapping("/articles/create")
-    public String createArticle(ArticleForm form){
-        log.info(form.toString());
-//        System.out.println(form.toString());
+    public String createArticle(ArticleForm form, RedirectAttributes rttr) {
+        log.info("Received ArticleForm: {}", form);
 
-        // 1. DTO를 엔티티로 변환
-        Article article = form.toEntity();
-        log.info(article.toString());
-//        System.out.println(article.toString());
+        try {
+            // 1. DTO를 엔티티로 변환
+            Article article = form.toEntity();
+            article.setId(null); // 기존 ID 제거로 중복 방지
+            log.info("Converted to Entity: {}", article);
 
-        // 2. 레파지토리로 엔티티를 db에 저장
-        Article saved = articleRepository.save(article);
-        log.info(saved.toString());
-//        System.out.println(saved.toString());
-        return "redirect:/articles/"+saved.getId();
+            // 2. 레파지토리로 엔티티를 DB에 저장
+            Article saved = articleRepository.save(article);
+            log.info("Saved Article: {}", saved);
+
+            // 3. 성공 메시지 설정
+            rttr.addFlashAttribute("msg", "새 글이 성공적으로 작성되었습니다!");
+        } catch (DataIntegrityViolationException e) {
+            // Primary Key 중복 예외 처리
+            log.error("Database constraint violation while creating article", e);
+            rttr.addFlashAttribute("msg", "중복된 데이터로 인해 글을 작성할 수 없습니다.");
+            return "redirect:/articles/new";
+        } catch (Exception e) {
+            // 일반적인 예외 처리
+            log.error("Unexpected error while creating article", e);
+            rttr.addFlashAttribute("msg", "글 작성 중 예상치 못한 오류가 발생했습니다.");
+            return "redirect:/articles/new";
+        }
+
+        // 4. 목록 페이지로 리다이렉트
+        return "redirect:/articles";
     }
 
     @GetMapping("/articles/{id}")
@@ -75,21 +91,26 @@ public class ArticleController {
     }
 
     @PostMapping("/articles/update")
-    public String update(ArticleForm form){
+    public String update(ArticleForm form, RedirectAttributes rttr) {
         log.info(form.toString());
         // 1. DTO를 엔티티로 변환하기
         Article articleEntity = form.toEntity();
-        log.info(articleEntity.toString());
+        log.info("Converted to Entity: {}", articleEntity);
+
         // 2. 엔티티를 DB에 저장하기
         // 2-1. DB에서 기존 데이터 가져오기
         Article target = articleRepository.findById(articleEntity.getId()).orElse(null);
-        // 2-2. 기존 데이터 값을 갱신하기
-        if(target != null){
+
+        // 2-2. 기존 데이터가 있을 경우 업데이트 수행
+        if (target != null) {
             articleRepository.save(articleEntity);
+            rttr.addFlashAttribute("msg", "글이 성공적으로 수정되었습니다!");
         }
-        // 3. 수정 결과 페이지로 리다이렉트하기
-        return "redirect:/articles/"+articleEntity.getId();
+
+        // 3. 수정된 게시글 상세 페이지로 리다이렉트하기
+        return "redirect:/articles/" + articleEntity.getId();
     }
+
 
     @GetMapping("/articles/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes rttr){

@@ -1,3 +1,13 @@
-INSERT INTO article(id, title, content) VALUES(1, '가가가', '111');
-INSERT INTO article(id, title, content) VALUES(2, '나나나', '222');
-INSERT INTO article(id, title, content) VALUES(3, '다다다', '333');
+INSERT INTO article(title, content) VALUES('회식 공지 (24.12.06)', '안녕하세요 마술동아리 회장 오형석입니다. 종강을 맞이하여 12월 14일에 회식을 준비했으니 많은 참석 부탁드립니다. 감사합니다.');
+INSERT INTO article(title, content) VALUES('정기 모임 공지 (24.12.06)', '포엠 부회장 조형민입니다. 금일 18시 예정된 정기 모임이 동아리방에서 예정되어있으니 늦지않게 참석 부탁드립니다~');
+INSERT INTO article(title, content) VALUES('마술 공연 일정 공지 (24.12.01)', '광복절 맞이 마술 공연이 오늘 오후 5시 원형광장에서 시작됩니다! 부원들이 많이 연습한만큼 박수와 격려를 아끼지 말고 보내주세요!');
+INSERT INTO article(title, content) VALUES('마술 공연 연습 일정 공지 (24.11.26)', '안녕하세요, 마술동아리 회장 오형석입니다. 12월 10일 오후 3시에 강당에서 마술 공연 연습을 진행합니다. 공연에 참여하는 부원들은 늦지 않게 참석 부탁드립니다.');
+INSERT INTO article(title, content) VALUES('정기 회의 안내 (24.11.15)', '안녕하세요, 부회장 조형민입니다. 이번 주 금요일(11월 17일) 저녁 6시에 동아리방에서 정기 회의를 진행합니다. 모두 참석 부탁드리며, 건의사항이 있다면 미리 준비해 주세요!');
+INSERT INTO article(title, content) VALUES('동아리 새 소도구 구매 (24.10.05)', '안녕하세요, 마술동아리 회장 오형석입니다. 동아리에 필요한 새로운 소도구를 구매하였습니다. 동아리방에 정리되어 있으니 연습 때 적극 활용해 주시기 바랍니다.');
+INSERT INTO article(title, content) VALUES('포스터 제작 관련 안내 (24.09.10)', '안녕하세요, 부회장 조형민입니다. 9월 20일까지 동아리 활동 포스터 제작 아이디어를 제출받습니다. 좋은 아이디어가 있으시면 언제든 공유해 주세요!');
+INSERT INTO article(title, content) VALUES('신입 부원 OT 공지 (24.07.15)', '안녕하세요, 마술동아리 회장 오형석입니다. 7월 20일 오후 4시에 신입 부원 OT를 진행합니다. 선배 부원들도 함께 참여하여 후배들과 교류의 시간을 가져주세요.');
+INSERT INTO article(title, content) VALUES('송년회 공지 (24.06.20)', '안녕하세요, 부회장 조형민입니다. 6월 25일 저녁 7시에 1학기를 마무리하며 회식이 있습니다. 올해를 마무리하며 즐거운 시간을 보내요. 상세 장소는 추후 공지하겠습니다!');
+INSERT INTO article(title, content) VALUES('마술 워크숍 안내 (24.05.10)', '안녕하세요, 마술동아리 회장 오형석입니다. 5월 15일 오후 2시에 마술 워크숍을 진행합니다. 실력을 높일 좋은 기회이니 모두 참석 바랍니다.');
+INSERT INTO article(title, content) VALUES('공연 영상 촬영 협조 요청 (24.04.15)', '안녕하세요, 부회장 조형민입니다. 4월 22일에 진행될 공연 영상 촬영과 관련해 몇 가지 협조 요청 사항이 있습니다. 관련된 내용은 정기 회의 때 안내하겠습니다.');
+INSERT INTO article(title, content) VALUES('동아리 규칙 변경안 공지 (24.03.20)', '안녕하세요, 마술동아리 회장 오형석입니다. 동아리 활동과 관련된 규칙 일부를 개정하였습니다. 세부 내용은 동아리 공지사항 게시판을 확인해 주시기 바랍니다.');
+INSERT INTO article(title, content) VALUES('정기 모임 안내 (24.03.05)', '안녕하세요, 부회장 조형민입니다. 이번 주 금요일(3월 10일) 저녁 6시에 동아리방에서 정기 모임을 진행합니다. 모두 참석 부탁드립니다!');

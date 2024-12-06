@@ -1,25 +1,28 @@
 {{>layouts/header}}
 
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#article}}
-    <tr>
-        <th scope="row">{{id}}</th>
-        <td>{{title}}</td>
-        <td>{{content}}</td>
-    </tr>
-    {{/article}}
-    </tbody>
-</table>
-<a href="/articles/{{article.id}}/edit" class="btn btn-primary">편집</a>
-<a href="/articles/{{article.id}}/delete" class="btn btn-danger">삭제</a>
-<a href="/articles">목록</a>
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h1 class="card-title text-center" style="font-family: 'Cursive', sans-serif; color: #5a3d99;">
+                {{article.title}}
+            </h1>
+            <hr>
+
+            <p class="card-text mt-4" style="font-size: 1.2rem; line-height: 1.8; text-align: justify; min-height: 500px">
+                {{article.content}}
+            </p>
+
+            <hr>
+
+            <div class="d-flex justify-content-between">
+                <a href="/articles" class="btn btn-secondary">목록</a>
+                <div>
+                    <a href="/articles/{{article.id}}/edit" class="btn btn-primary me-2">편집</a>
+                    <a href="/articles/{{article.id}}/delete" class="btn btn-danger">삭제</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{>layouts/footer}}

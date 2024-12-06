@@ -1,21 +1,27 @@
 {{>layouts/header}}
 
 {{#article}}
-<form class="container" action="/articles/update" method="post">
-    <input name="id" type="hidden" value="{{id}}">
-    <div class="mb-3">
-        <label class="from-label">제목</label>
-        <input type="text" class="form-control" name="title" value="{{title}}">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">내용</label>
-        <label>
-            <textarea class="form-control" rows="3" name="content">{{content}}</textarea>
-        </label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <a href="/articles/{{id}}">Back</a>
-</form>
+    <form class="container mt-5" action="/articles/update" method="post">
+        <input name="id" type="hidden" value="{{id}}">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label" style="font-family: 'Cursive', sans-serif; color: #5a3d99;">제목</label>
+                    <input type="text" class="form-control" name="title" value="{{title}}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" style="font-family: 'Cursive', sans-serif; color: #5a3d99;">내용</label>
+                    <textarea class="form-control" rows="3" style="height: 500px;" name="content">{{content}}</textarea>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="/articles/{{id}}" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    </form>
 {{/article}}
 
 {{>layouts/footer}}

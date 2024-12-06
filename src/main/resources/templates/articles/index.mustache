@@ -1,25 +1,50 @@
 {{>layouts/header}}
-<div>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#articleList}}
-    <tr>
-        <th scope="row">{{id}}</th>
-        <td><a href="articles/{{id}}">{{title}}</a></td>
-        <td>{{content}}</td>
-    </tr>
-    {{/articleList}}
-    </tbody>
-</table>
+<div class="container mt-5">
+    <h1 class="text-center mb-4" style="font-family: 'Cursive', sans-serif; color: #5a3d99;">
+        포엠 공지사항
+    </h1>
 
-<a href="/articles/new" class="btn btn-primary">새 공지 만들기</a>
+    <div class="card shadow-lg mb-5">
+        <div class="card-body">
+            <table class="table table-hover table-bordered text-center">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" style="width: 5%;">번호</th>
+                    <th scope="col" style="width: 45%;">제목</th>
+                    <th scope="col" style="width: 50%;">내용</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#articleList}}
+                    <tr>
+                        <th scope="row">{{id}}</th>
+                        <td><a href="articles/{{id}}" style="color: #5a3d99; font-weight: bold; text-decoration: none;">{{title}}</a></td>
+                        <td>{{content}}</td>
+                    </tr>
+                {{/articleList}}
+
+                {{^articleList}}
+                    <tr>
+                        <td colspan="3" class="text-center text-muted">
+                            공지사항이 없습니다. 새로운 공지를 작성해보세요!
+                        </td>
+                    </tr>
+                {{/articleList}}
+                </tbody>
+            </table>
+
+            <div class="text-right mt-3">
+                <a href="/articles/new" class="btn btn-primary" style="background-color: #5a3d99; border: none;">
+                    새 공지 만들기
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center mt-5">
+        <p style="font-family: 'Cursive', sans-serif; color: #6c757d;">
+            마지막 업데이트 | 24.12.06
+        </p>
+    </footer>
 </div>
-
 {{>layouts/footer}}

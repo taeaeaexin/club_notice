@@ -19,4 +19,11 @@ public class Article {
     private String title;
     @Column
     private String content;
+
+    public void setId(Object o) {
+    }
+
+    public void setTitle(String title) {
+
+    }
 }

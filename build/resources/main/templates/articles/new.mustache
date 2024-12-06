@@ -1,16 +1,27 @@
 {{>layouts/header}}
 
-<form class="container" action="/articles/create" method="post">
-    <div class="mb-3">
-        <label class="from-label">제목</label>
-        <input type="text" class="form-control" name="title">
+<form class="container mt-5" action="/articles/create" method="post">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <!-- 제목 입력 -->
+            <div class="mb-3">
+                <label class="form-label" style="font-family: 'Cursive', sans-serif; color: #5a3d99;">제목</label>
+                <input type="text" class="form-control" name="title" placeholder="제목을 입력하세요">
+            </div>
+
+            <!-- 내용 입력 -->
+            <div class="mb-3">
+                <label class="form-label" style="font-family: 'Cursive', sans-serif; color: #5a3d99;">내용</label>
+                <textarea class="form-control" rows="3" style="height: 500px;" name="content" placeholder="내용을 입력하세요"></textarea>
+            </div>
+
+            <!-- 버튼 섹션 -->
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="/articles" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label class="form-label">내용</label>
-        <textarea class="form-control" rows="3" name="content"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <a href="/articles">Back</a>
 </form>
 
 {{>layouts/footer}}
